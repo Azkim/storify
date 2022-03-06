@@ -56,7 +56,7 @@
                 <thead class="bg-blue-800">
                     <tr>
                         <th class="pl-6 py-3 border-b border-white bg-white-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">Title</th>
-                        <th class="mr-200 border-b border-white bg-white-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">Status</th>
+                        <th class="mr-20 border-b border-white bg-white-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">Status</th>
                         <th class="py-0 border-b border-white bg-white-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">Actions</th>
                     </tr>
                 </thead>
