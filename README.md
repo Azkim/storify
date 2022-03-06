@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dashboard Template
 
 <a href="https://github.com/tailwindcomponents/dashboard-template/blob/master/LICENSE.md">
@@ -56,3 +57,6 @@ npm run watch
 ```
 npm run production
 ```
+=======
+# storify
+>>>>>>> 8f0af2adccf743f8853daf3e00d54667370eda75
