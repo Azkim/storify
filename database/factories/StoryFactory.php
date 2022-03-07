@@ -14,14 +14,7 @@ class StoryFactory extends Factory
      * @return array
      */
     public function definition()
-    {
-        // return [
-        //     'title' => $this->faker->sentence(4,true),
-        //     'body' => $this->faker->paragraph(3, true),
-        //     'type' => $this->faker->words($nb = 3, $asText = false),
-        //     'status' => rand(0,1),
-        //     'user_id' => Str::random(10),
-        // ];
+    {        
 
          return [
             'title' => $this->faker->sentence(4,true),
