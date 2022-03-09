@@ -48,7 +48,7 @@ class ProfileController extends Controller
         if ($request->hasFile('avatar')) {
 
             $request->validated();
-            $fileName =  $request->file('avatar')->getClientOriginalName();
+            //$fileName =  $request->file('avatar')->getClientOriginalName();
 
             $user = new User([
                 'name' => $request->input('name'),
@@ -56,7 +56,8 @@ class ProfileController extends Controller
                 'role' => $request->input('role'),
                 'password' => Hash::make($request->input('password')),
                 'description' => $request->input('description'),
-                "file_path" => $request->file('avatar')->storeAs('images/avatars', $fileName)
+                "file_name" => $request->file('avatar')->getClientOriginalName()
+                //"file_path" => $request->file('avatar')->storeAs('images/avatars', $fileName)
             ]);
             $user->save();
 

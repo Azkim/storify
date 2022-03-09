@@ -631,10 +631,6 @@ select{
   pointer-events: none;
 }
 
-.visible{
-  visibility: visible;
-}
-
 .fixed{
   position: fixed;
 }
@@ -689,10 +685,6 @@ select{
 
 .col-span-6{
   grid-column: span 6 / span 6;
-}
-
-.col-span-3{
-  grid-column: span 3 / span 3;
 }
 
 .col-span-1{
@@ -753,6 +745,11 @@ select{
   margin-right: 1.25rem;
 }
 
+.my-0{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .mx-4{
   margin-left: 1rem;
   margin-right: 1rem;
@@ -796,16 +793,6 @@ select{
 .my-4{
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-
-.my-2{
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.my-0{
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 .ml-3{
@@ -896,6 +883,10 @@ select{
   margin-bottom: 2rem;
 }
 
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -914,14 +905,6 @@ select{
 
 .ml-0{
   margin-left: 0;
-}
-
-.mb-6{
-  margin-bottom: 1.5rem;
-}
-
-.mt-20{
-  margin-top: 5rem;
 }
 
 .mr-20{
@@ -1132,12 +1115,12 @@ select{
   grid-template-columns: repeat(8, minmax(0, 1fr));
 }
 
-.grid-cols-2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row-reverse{
@@ -1281,6 +1264,11 @@ select{
   border-color: rgb(90 103 216 / var(--tw-border-opacity));
 }
 
+.border-blue-500{
+  --tw-border-opacity: 1;
+  border-color: rgb(66 153 225 / var(--tw-border-opacity));
+}
+
 .border-gray-400{
   --tw-border-opacity: 1;
   border-color: rgb(203 213 224 / var(--tw-border-opacity));
@@ -1294,11 +1282,6 @@ select{
 .border-orange-500{
   --tw-border-opacity: 1;
   border-color: rgb(237 137 54 / var(--tw-border-opacity));
-}
-
-.border-blue-500{
-  --tw-border-opacity: 1;
-  border-color: rgb(66 153 225 / var(--tw-border-opacity));
 }
 
 .bg-white{
@@ -1391,6 +1374,21 @@ select{
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
+.bg-blue-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(42 67 101 / var(--tw-bg-opacity));
+}
+
+.bg-gray-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(113 128 150 / var(--tw-bg-opacity));
+}
+
+.bg-blue-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(66 153 225 / var(--tw-bg-opacity));
+}
+
 .bg-blue-700{
   --tw-bg-opacity: 1;
   background-color: rgb(43 108 176 / var(--tw-bg-opacity));
@@ -1421,19 +1419,9 @@ select{
   background-color: rgb(254 215 215 / var(--tw-bg-opacity));
 }
 
-.bg-blue-500{
-  --tw-bg-opacity: 1;
-  background-color: rgb(66 153 225 / var(--tw-bg-opacity));
-}
-
 .bg-yellow-500{
   --tw-bg-opacity: 1;
   background-color: rgb(236 201 75 / var(--tw-bg-opacity));
-}
-
-.bg-gray-600{
-  --tw-bg-opacity: 1;
-  background-color: rgb(113 128 150 / var(--tw-bg-opacity));
 }
 
 .bg-orange-600{
@@ -1469,21 +1457,6 @@ select{
 .bg-red-300{
   --tw-bg-opacity: 1;
   background-color: rgb(254 178 178 / var(--tw-bg-opacity));
-}
-
-.bg-blue-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(42 67 101 / var(--tw-bg-opacity));
-}
-
-.bg-blue-300{
-  --tw-bg-opacity: 1;
-  background-color: rgb(144 205 244 / var(--tw-bg-opacity));
-}
-
-.bg-red-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(116 42 42 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-25{
@@ -1609,6 +1582,11 @@ select{
   padding-right: 1.25rem;
 }
 
+.py-10{
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .px-0{
   padding-left: 0;
   padding-right: 0;
@@ -1622,11 +1600,6 @@ select{
 .py-12{
   padding-top: 3rem;
   padding-bottom: 3rem;
-}
-
-.py-10{
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
 }
 
 .pr-6{
@@ -1653,6 +1626,14 @@ select{
   padding-bottom: 0.5rem;
 }
 
+.pt-4{
+  padding-top: 1rem;
+}
+
+.pr-16{
+  padding-right: 4rem;
+}
+
 .pl-3{
   padding-left: 0.75rem;
 }
@@ -1663,6 +1644,14 @@ select{
 
 .pr-4{
   padding-right: 1rem;
+}
+
+.pl-6{
+  padding-left: 1.5rem;
+}
+
+.pl-0{
+  padding-left: 0;
 }
 
 .pt-1{
@@ -1687,30 +1676,6 @@ select{
 
 .pl-8{
   padding-left: 2rem;
-}
-
-.pt-4{
-  padding-top: 1rem;
-}
-
-.pr-20{
-  padding-right: 5rem;
-}
-
-.pr-16{
-  padding-right: 4rem;
-}
-
-.pl-6{
-  padding-left: 1.5rem;
-}
-
-.pl-20{
-  padding-left: 5rem;
-}
-
-.pl-0{
-  padding-left: 0;
 }
 
 .text-left{
@@ -1922,6 +1887,11 @@ select{
   color: rgb(49 130 206 / var(--tw-text-opacity));
 }
 
+.text-yellow-500{
+  --tw-text-opacity: 1;
+  color: rgb(236 201 75 / var(--tw-text-opacity));
+}
+
 .text-indigo-400{
   --tw-text-opacity: 1;
   color: rgb(127 156 245 / var(--tw-text-opacity));
@@ -1950,11 +1920,6 @@ select{
 .text-blue-500{
   --tw-text-opacity: 1;
   color: rgb(66 153 225 / var(--tw-text-opacity));
-}
-
-.text-yellow-500{
-  --tw-text-opacity: 1;
-  color: rgb(236 201 75 / var(--tw-text-opacity));
 }
 
 .text-red-600{
@@ -2142,6 +2107,16 @@ select{
   background-color: rgb(90 103 216 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-blue-700:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(43 108 176 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-red-700:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(197 48 48 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-gray-300:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
@@ -2202,19 +2177,9 @@ select{
   background-color: rgb(237 100 166 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-blue-700:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(43 108 176 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-green-700:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(47 133 90 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-red-700:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(197 48 48 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-opacity-25:hover{
@@ -2241,6 +2206,11 @@ select{
   color: rgb(247 250 252 / var(--tw-text-opacity));
 }
 
+.hover\:text-indigo-100:hover{
+  --tw-text-opacity: 1;
+  color: rgb(235 244 255 / var(--tw-text-opacity));
+}
+
 .hover\:text-white:hover{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -2254,11 +2224,6 @@ select{
 .hover\:text-gray-600:hover{
   --tw-text-opacity: 1;
   color: rgb(113 128 150 / var(--tw-text-opacity));
-}
-
-.hover\:text-indigo-100:hover{
-  --tw-text-opacity: 1;
-  color: rgb(235 244 255 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover{
@@ -2428,10 +2393,6 @@ select{
 
   .sm\:col-span-6{
     grid-column: span 6 / span 6;
-  }
-
-  .sm\:col-span-3{
-    grid-column: span 3 / span 3;
   }
 
   .sm\:-mx-6{

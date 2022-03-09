@@ -13,7 +13,8 @@ class Story extends Model
         'title',
         'body',
         'type',
-        'status'
+        'status',
+        'user_id'
     ];
 
     public function user(){
