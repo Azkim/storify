@@ -6,18 +6,18 @@
         <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
             <table class="min-w-full border-collapse block md:table">
                 <thead class="block md:table-header-group">
-                    <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative sm:invisible xs:invisible md:visible lg:visible xl:visible">
+                    <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto md:relative xs:invisible sm:invisible md:visible lg:visible xl:visible">
+                        <th class="bg-gray-600 py-2 pl-4 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Date Created</th>
                         <th class="bg-gray-600 py-2 pl-4 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Title</th>
-                        <th class="bg-gray-600 py-2 pl-4 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Body</th>
                         <th class="bg-gray-600 py-2 pl-4 pr-8 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Status</th>
                         <th class="bg-gray-600 py-2 pl-4 pr-8  text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="block md:table-row-group">
                     @foreach($results as $result)
-                    <tr class="bg-gray-100 border border-grey-500 md:border-none block md:table-row" style="padding:20px 0px 30px 0px;">
+                    <tr class="bg-gray-100 border border-grey-500 md:border-none block md:table-row">
+                        <td class="line-clamp-3 md:break-all text-clip py-2 pl-4 md:border md:border-grey-500 text-left block md:table-cell"><span class="line-clamp-2 text-clip inline-block w-full md:hidden font-bold">Date Created</span>{{ $result->created_at }}</td>
                         <td class="py-2 pl-4 md:border md:border-grey-500 text-left block md:table-cell"><span class="mb-1000 inline-block w-full md:hidden font-bold">Title</span>{{ $result->title }}</td>
-                        <td class="py-2 pl-4 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-full md:hidden font-bold">Body</span>{{ $result->body }}</td>
                         <td class="py-2 pl-4 whitespace-no-wrap border-b border-white">
                             @if($result->status == 1)
                             <span class="inline-block w-full md:hidden font-bold">Status</span>
@@ -31,7 +31,7 @@
                             </span>
                             @endif
                         </td>
-                        <td class="mb-40 py-2 pl-4 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-full md:hidden font-bold">Action</span>
+                        <td class="mb-8 py-2 pl-4 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-full md:hidden font-bold">Action</span>
                             <a href="{{route('stories.show',[$result->id])}}" class="text-indigo-600 hover:text-blue-900">View</a>
                         </td>
                     </tr>

@@ -18,6 +18,7 @@ module.exports = {
   presets: [],
   theme: {
     screens: {
+      xs: '350px',
       sm: '375px',
       md: '768px',
       lg: '1024px',
