@@ -21,7 +21,7 @@ class StoryFactory extends Factory
             'body' => $this->faker->paragraph($nb = 3, $asText = true),
             'type' => $this->faker->randomElement($array = array ('educational','general','career')),
             'status' => $this->faker->boolean(),
-            'user_id' => $this->faker->numberBetween($min = 0, $max =94),
+            'user_id' => $this->faker->numberBetween($min = 1, $max =141),
         ];
     } 
 }

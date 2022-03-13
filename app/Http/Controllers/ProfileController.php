@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Arr;
 use App\Models\User;
-use App\Models\Story as story;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -127,7 +124,6 @@ class ProfileController extends Controller
             ->orderBy('stories.id', 'desc')
             ->paginate(20);
 
-        //dd($results);
         return view('source.users.articles', compact('results'));
     }
 }
