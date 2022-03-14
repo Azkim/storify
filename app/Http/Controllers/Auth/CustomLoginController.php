@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class CustomLoginController extends Controller
 {
@@ -26,6 +26,6 @@ class CustomLoginController extends Controller
                         ->withSuccess('Signed in');
         }
   
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect('login')->withSuccess('Login details are not valid');
     }
 }

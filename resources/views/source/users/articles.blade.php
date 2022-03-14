@@ -7,10 +7,10 @@
             <table class="min-w-full border-collapse block md:table">
                 <thead class="block md:table-header-group">
                     <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto md:relative xs:invisible sm:invisible md:visible lg:visible xl:visible">
-                        <th class="bg-gray-600 py-2 pl-4 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Time Created</th>
-                        <th class="bg-gray-600 py-2 pl-4 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Title</th>
-                        <th class="bg-gray-600 py-2 pl-4 pr-8 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Status</th>
-                        <th class="bg-gray-600 py-2 pl-4  text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Actions</th>
+                        <th class="bg-gray-600 py-2 pl-4 text-white text-sm font-bold md:border md:border-grey-500 text-left block md:table-cell">TIME CREATED</th>
+                        <th class="bg-gray-600 py-2 pl-4 text-white text-sm font-bold md:border md:border-grey-500 text-left block md:table-cell">TITLE</th>
+                        <th class="bg-gray-600 py-2 pl-4 text-white text-sm font-bold md:border md:border-grey-500 text-left block md:table-cell">STATUS</th>
+                        <th class="bg-gray-600 py-2 pl-4  text-white text-sm font-bold md:border md:border-grey-500 text-left block md:table-cell">ACTION</th>
                     </tr>
                 </thead>
                 <tbody class="block md:table-row-group">

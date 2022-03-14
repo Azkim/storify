@@ -3,8 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\Story;
+use App\Models\User;
 
 class StoryFactory extends Factory
 {
@@ -15,13 +14,12 @@ class StoryFactory extends Factory
      */
     public function definition()
     {        
-
-         return [
-            'title' => $this->faker->sentence(4,true),
-            'body' => $this->faker->paragraph($nb = 3, $asText = true),
-            'type' => $this->faker->randomElement($array = array ('educational','general','career')),
-            'status' => $this->faker->boolean(),
-            'user_id' => $this->faker->numberBetween($min = 1, $max =141),
-        ];
+        return [
+        'title' => $this->faker->sentence(4,true),
+        'body' => $this->faker->paragraph($nb = 3, $asText = true),
+        'type' => $this->faker->randomElement($array = array ('educational','general','career')),
+        'status' => $this->faker->boolean(),
+        'user_id' => $this->faker->numberBetween($min = 1, $max = User::count())
+    ];
     } 
 }

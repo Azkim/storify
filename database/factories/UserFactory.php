@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'description' => $this->faker->paragraph($nb = 3, $asText = true),
             'file_name' => $this->faker->image('public/images/avatars',400,300, null, false),
-            'role' => $this->faker->randomElement($array = array ('admin','author')),
+            'role' => $this->faker->randomElement($array = array ('author')),
         ];
     }
 
