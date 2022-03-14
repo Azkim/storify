@@ -35,6 +35,8 @@ Route::get('/login', [CustomLoginController::class, 'create'])
 Route::post('/login', [CustomLoginController::class, 'store'])
                 ->middleware('guest');
 
+
+//Main App Routes
 Route::middleware(['auth'])->group(function(){
     Route::resource('stories','StoriesController');
     Route::get('/user/articles', 'ProfileController@articles')->name('user.articles');
