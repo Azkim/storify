@@ -806,14 +806,11 @@ select{
   margin-right: 5rem;
 }
 
-<<<<<<< HEAD
 .my-0{
   margin-top: 0;
   margin-bottom: 0;
 }
 
-=======
->>>>>>> user_profile_build
 .ml-3{
   margin-left: 0.75rem;
 }
@@ -1508,14 +1505,11 @@ select{
   background-color: rgb(155 44 44 / var(--tw-bg-opacity));
 }
 
-<<<<<<< HEAD
 .bg-blue-900{
   --tw-bg-opacity: 1;
   background-color: rgb(42 67 101 / var(--tw-bg-opacity));
 }
 
-=======
->>>>>>> user_profile_build
 .bg-opacity-25{
   --tw-bg-opacity: 0.25;
 }
@@ -1653,14 +1647,21 @@ select{
   padding-right: 2.5rem;
 }
 
-<<<<<<< HEAD
 .py-10{
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
 
-=======
->>>>>>> user_profile_build
+.py-40{
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+.py-8{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .pl-4{
   padding-left: 1rem;
 }
@@ -1731,6 +1732,26 @@ select{
 
 .pr-16{
   padding-right: 4rem;
+}
+
+.pt-40{
+  padding-top: 10rem;
+}
+
+.pb-4{
+  padding-bottom: 1rem;
+}
+
+.pl-6{
+  padding-left: 1.5rem;
+}
+
+.pl-5{
+  padding-left: 1.25rem;
+}
+
+.pr-10{
+  padding-right: 2.5rem;
 }
 
 .text-left{
@@ -2261,21 +2282,12 @@ select{
 }
 
 .hover\:text-gray-600:hover{
-<<<<<<< HEAD
   --tw-text-opacity: 1;
   color: rgb(113 128 150 / var(--tw-text-opacity));
 }
 
 .hover\:text-gray-700:hover{
   --tw-text-opacity: 1;
-=======
-  --tw-text-opacity: 1;
-  color: rgb(113 128 150 / var(--tw-text-opacity));
-}
-
-.hover\:text-gray-700:hover{
-  --tw-text-opacity: 1;
->>>>>>> user_profile_build
   color: rgb(74 85 104 / var(--tw-text-opacity));
 }
 
@@ -2289,14 +2301,11 @@ select{
   color: rgb(60 54 107 / var(--tw-text-opacity));
 }
 
-<<<<<<< HEAD
 .hover\:text-indigo-100:hover{
   --tw-text-opacity: 1;
   color: rgb(235 244 255 / var(--tw-text-opacity));
 }
 
-=======
->>>>>>> user_profile_build
 .hover\:underline:hover{
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -2515,6 +2524,10 @@ select{
     display: flex;
   }
 
+  .sm\:grid{
+    display: grid;
+  }
+
   .sm\:hidden{
     display: none;
   }
@@ -2553,6 +2566,17 @@ select{
 
   .sm\:justify-between{
     justify-content: space-between;
+  }
+
+  .sm\:gap-x-4{
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
+  }
+
+  .sm\:space-x-4 > :not([hidden]) ~ :not([hidden]){
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .sm\:rounded-lg{
@@ -2699,13 +2723,10 @@ select{
 
   .md\:w-9\/12{
     width: 75%;
-<<<<<<< HEAD
   }
 
   .md\:max-w-lg{
     max-width: 32rem;
-=======
->>>>>>> user_profile_build
   }
 
   .md\:grid-cols-3{
@@ -2714,6 +2735,10 @@ select{
 
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:items-start{
+    align-items: flex-start;
   }
 
   .md\:gap-6{
@@ -2788,6 +2813,10 @@ select{
   .lg\:translate-x-0{
     --tw-translate-x: 0;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .lg\:grid-cols-4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:flex-row{

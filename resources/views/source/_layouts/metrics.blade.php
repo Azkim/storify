@@ -19,7 +19,7 @@
             </div>
         </div>
         
-        <div class="w-full px-6 md:pb-8 sm:w-full xl:w-1/2">
+        <div class="w-full px-6 pb-8 sm:w-full xl:w-1/2">
             <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                 <div class="p-3 rounded-full bg-blue-600 bg-opacity-75">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
@@ -58,7 +58,7 @@
             </div>
         </div>
         
-        <div class="w-full px-6 md:pb-8 sm:w-full xl:w-1/4">
+        <div class="w-full px-6 pb-8 sm:w-full xl:w-1/4">
             <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                 <div class="p-3 rounded-full bg-blue-600 bg-opacity-75">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="w-full mt-6 px-6 pb-2 sm:w-full xl:w-1/4 sm:mt-0">
+        <div class="w-full mt-6 px-6 pb-8 sm:w-full xl:w-1/4 sm:mt-0">
             <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                 <div class="p-3 rounded-full bg-green-600 bg-opacity-75">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <div class="w-full mt-6 px-6 sm:w-full xl:w-1/4 xl:mt-0">
+        <div class="w-full px-6 sm:w-full xl:w-1/4 xl:mt-0">
             <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                 <div class="p-3 rounded-full bg-red-600 bg-opacity-75">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
