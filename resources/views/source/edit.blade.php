@@ -1,7 +1,7 @@
 @extends('source._layouts.master')
 @section('body')
 <container>
-    <div class="mt-10 sm:mt-14 border-solid border-2 border-indigo-300 sm:rounded-md" style="padding:20px 20px 20px 30px">
+    <div class="mt-10 sm:mt-14 border-solid border-2 border-gray-400 bg-gray-300 sm:rounded-md" style="padding:20px 20px 20px 30px">
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
                 <div class="px-4 sm:px-6">

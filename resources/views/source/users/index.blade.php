@@ -23,7 +23,7 @@
                         <td class="py-2 pl-4 md:border md:border-grey-500 text-left block md:table-cell Whitespace-no-wrap border-b border-white"><span class="mb-1000 inline-block w-full md:hidden font-bold">USER DETAILS</span>
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 h-10 w-10">
-                                    <img class="h-10 w-10 rounded-full" src="{{ strpos($result->file_name,'avatar') == false ? 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' : $result->file_name }}" alt="">
+                                    <img class="h-10 w-10 rounded-full" src="{{ strpos($result->file_name,'avatar') == false ? 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' : asset($result->file_name) }}" alt="">
                                 </div>
 
                                 <div class="ml-4">
@@ -45,7 +45,7 @@
                             @endif
                         </td>
                         <td class="mb-8 py-2 pl-4 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-full md:hidden font-bold">Action</span>
-                            <a href="{{route('stories.show',[$result->id])}}" class="text-indigo-600 hover:text-blue-900">View</a>
+                            <a href="{{route('users.show',[$result->id])}}" class="text-indigo-600 hover:text-blue-900">View</a>
                         </td>
                     </tr>
                     @endforeach

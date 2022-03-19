@@ -63,8 +63,8 @@
             <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"></div>
 
             <div x-show="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">My Profile</a>
-                <a href="{{ route('user.articles') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">My Articles</a>
+                <a href="{{ route('users.show',[auth()->user()]) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">My Profile</a>
+                <a href="{{ route('user.articles',[auth()->user()]) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">My Stories</a>
                 <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

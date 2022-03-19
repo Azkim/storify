@@ -1,78 +1,99 @@
 @extends('source._layouts.master')
 @section('body')
-<div class="pt-4">{{ Breadcrumbs::render('stories.show') }}</div>
 
-<!-- component -->
-<div class="bg-slate-700 w-full mt-10 py-10 px-10 border-solid border-2 border-indigo-300 sm:rounded-md">
-  <div>
-    <div class="sm:flex space-x-7 md:items-start items-center">
-      <div class="mb-4 pr-16">
-        <img class="rounded-md md:w-80" src="https://avatars.githubusercontent.com/u/5550850?v=4" alt="brad" />
+<style>
+  :root {
+    --main-color: #4a76a8;
+  }
+
+  .bg-main-color {
+    background-color: var(--main-color);
+  }
+
+  .text-main-color {
+    color: var(--main-color);
+  }
+
+  .border-main-color {
+    border-color: var(--main-color);
+  }
+</style>
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
+
+<div class="bg-gray-100">
+
+  <div class="container mx-auto my-5 p-5">
+    <div class="md:flex no-wrap md:-mx-2 ">
+      <!-- Left Side -->
+      <div class="w-full md:w-3/12 md:mx-2">
+        <!-- Profile Card -->
+        <div class="bg-white p-3 border-t-4 border-blue-800">
+          <div class="image overflow-hidden">
+            <img class="h-auto w-full mx-auto" src="{{ strpos($user->file_name,'avatar') == false ? 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' : asset($user->file_name) }}" alt="">
+          </div>
+          <h1 class="text-gray-900 font-bold text-xl leading-8 mt-4">ABOUT ME</h1>
+          <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{{$user->description}}</p>
+          <ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+            <li class="flex items-center py-3 grid grid-cols-2 gap-2">
+              <a href="{{ route('users.edit',[$user]) }}" class="col-span-1 w-full bg-green-800 py-1 px-2 rounded text-white text-base font-semibold text-center">EDIT</a>
+              <form method="POST" action="{{ route('users.destroy',[$user->id]) }}">
+                @csrf
+                @method('DELETE')
+                <button href="{{ route('users.edit',[$user]) }}" class="col-span-1 w-full bg-red-800 py-1 px-2 rounded text-white text-base font-semibold text-center">DELETE</button>
+              </form>
+            </li>
+            <li class="flex items-center py-3">
+              <span>Member since</span>
+              <span class="ml-auto">{{\Carbon\Carbon::parse($user->created_at)->format('d-m-Y')}}</span>
+            </li>
+          </ul>
+        </div>
+        <!-- End of profile card -->
+        <div class="my-4"></div>
+
       </div>
-      <div>
-        <h1 class="text-slate-100 text-4xl font-bold my-0">Brad Traversy</h1>
-        <p class="text-slate-100 text-lg tracking-wide mb-6 md:max-w-lg">Full stack web developer and online instructor, specializiing in mostly JS, but also write Python, PHP and some other stuff.</p>
-        <button class="border-2 px-6 py-4 rounded-md border-indigo-600 text-slate-100 hover:bg-indigo-600 hover:text-indigo-100 transition duration-75">VISIT GITHUB PROFILE</button>
-      </div>
-    </div>
-  </div>
-  <div class="mt-8 sm:grid grid-cols-3 sm:space-x-4">
-    <div class="bg-blue-900 p-6 rounded-md mb-4">
-      <span class="text-white text-md">Location</span>
-      <h2 class="text-white text-2xl font-semibold">Massachusetts</h2>
-    </div>
-    <div class="bg-slate-600 p-6 rounded-md mb-4">
-      <span class="text-slate-400 text-md">Website</span>
-      <h2 class="text-slate-100 text-2xl font-semibold">traversymedia</h2>
-    </div>
-    <div class="bg-slate-600 p-6 rounded-md mb-4">
-      <span class="text-slate-400 text-md">Twitter</span>
-      <h2 class="text-slate-100 text-2xl font-semibold">traversymedia</h2>
-    </div>
-  </div>
-  <div class="sm:grid lg:grid-cols-4 grid-cols-2 sm:gap-x-4">
-    <div class="flex justify-between items-center bg-slate-600 p-6 rounded-md mb-4">
-      <div>
-        <span class="text-md text-slate-400">Followers</span>
-        <h1 class="text-3xl font-bold text-slate-100">47155</h1>
-      </div>
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      </div>
-    </div>
-    <div class="flex justify-between items-center bg-slate-600 p-6 rounded-md mb-4">
-      <div>
-        <span class="text-md text-slate-400">Following</span>
-        <h1 class="text-3xl font-bold text-slate-100">9322</h1>
-      </div>
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-      </div>
-    </div>
-    <div class="flex justify-between items-center bg-slate-600 p-6 rounded-md mb-4">
-      <div>
-        <span class="text-md text-slate-400">Public Rpos</span>
-        <h1 class="text-3xl font-bold text-slate-100">236</h1>
-      </div>
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-        </svg>
-      </div>
-    </div>
-    <div class="flex justify-between items-center bg-slate-600 p-6 rounded-md mb-4">
-      <div>
-        <span class="text-md text-slate-400">Public Gists</span>
-        <h1 class="text-3xl font-bold text-slate-100">40</h1>
-      </div>
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-        </svg>
+      <!-- Right Side -->
+      <div class="w-full md:w-9/12 mx-2 h-64">
+        <!-- Profile tab -->
+        <!-- About Section -->
+        <div class="bg-white p-3 shadow-sm rounded-sm">
+          <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+            <span clas="text-green-500">
+              <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </span>
+            <span class="tracking-wide">PROFILE DETAILS</span>
+          </div>
+          <div class="text-gray-700">
+            <div class="grid md:grid-cols-2 text-sm">
+              <div class="grid grid-cols-3">
+                <div class="pl-4 py-2 font-semibold col-span-1">Name</div>
+                <div class="px-0 py-2">{{$user->name}}</div>
+              </div>
+              <div class="grid grid-cols-3">
+                <div class="pl-4 py-2 font-semibold col-span-1">Email</div>
+                <div class="py-2">{{$user->email}}</div>
+              </div>
+              <div class="grid grid-cols-3">
+                <div class="pl-4 py-2 font-semibold col-span-1">Role</div>
+                <div class="py-2">{{ucfirst($user->role)}}</div>
+              </div>
+              <div class="grid grid-cols-3">
+                <div class="pl-4 py-2 font-semibold col-span-1">Updated</div>
+                <div class="py-2">{{\Carbon\Carbon::parse($user->updated_at)->format('d-m-Y')}}</div>
+              </div>
+            </div>
+          </div>
+          <a href="{{ route('user.articles',[$user]) }}" class="bg-blue-600 block w-full text-white text-base font-semibold rounded py-2 my-4 text-center">SHOW
+            USER STORIES</a>
+        </div>
+        <!-- End of about section -->
+
+        <div class="my-4"></div>
       </div>
     </div>
   </div>
