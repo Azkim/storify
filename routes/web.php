@@ -39,7 +39,7 @@ Route::post('/login', [CustomLoginController::class, 'store'])
 //Main App Routes
 Route::middleware(['auth'])->group(function(){
     Route::resource('stories','StoriesController');
-    Route::get('/user/articles', 'ProfileController@articles')->name('user.articles');
+    Route::get('/user/articles/{user}', 'ProfileController@articles')->name('user.articles');
     Route::resource('users','ProfileController');
     Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
 });

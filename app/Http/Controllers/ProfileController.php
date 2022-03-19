@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -53,7 +54,6 @@ class ProfileController extends Controller
                 'role' => $request->input('role'),
                 'password' => Hash::make($request->input('password')),
                 'description' => $request->input('description'),
-                //"file_name" => $request->file('avatar')->getClientOriginalName()
                 'file_name' => $request->file('avatar')->storeAs('images/avatars', $fileName)
             ]);
             $user->save();
@@ -85,7 +85,7 @@ class ProfileController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('source.users.edit',compact('user'));
     }
 
     /**
@@ -97,7 +97,32 @@ class ProfileController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => 'required|email|min:8|max:255|unique:users,email,'.$user->id,
+            'password' => ['required', 'string', 'min:8'],
+            'description' => 'required',
+            'avatar' => ['required','mimes:jpg,png'],
+            'role' => 'required',
+        ]);
+ 
+        if ($validator->fails()) {
+            return redirect('users.index')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
+        $validated_submitted_data = $validator->validated();
+
+        $fileName = $request->file('avatar')->getClientOriginalName();
+        $user->file_name = $request->file('avatar')->storeAs('images/avatars', $fileName);
+
+        $user->update($validated_submitted_data);
+
+        return redirect()->route('users.index', [$user])
+             ->with('status', 'The user has been updated.');
+        
     }
 
     /**
@@ -108,7 +133,9 @@ class ProfileController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index')
+            ->with('status', 'The user has been deleted.');
     }
 
     /**
@@ -116,11 +143,11 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function articles()
+    public function articles(User $user)
     {
         $results = DB::table('users')
             ->join('stories', 'users.id', '=', 'stories.user_id')
-            ->where('user_id', auth()->user()->id)
+            ->where('user_id', $user->id)
             ->orderBy('stories.id', 'desc')
             ->paginate(20);
 
