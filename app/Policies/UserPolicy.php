@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Story;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
-class StoriesPolicy
+
+class UserPolicy
 {
     use HandlesAuthorization;
 
@@ -25,12 +25,12 @@ class StoriesPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Story  $story
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Story $story)
+    public function view(User $user, User $model)
     {
-        return true; 
+        return true;
     }
 
     /**
@@ -41,45 +41,47 @@ class StoriesPolicy
      */
     public function create(User $user)
     {
-        return true;
+        return $user->role == 'admin'
+            ? Response::allow()
+            : Response::deny(__("You cannot Create a User because you are not an admin"));
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Story  $story
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Story $story)
+    public function update(User $user, User $model)
     {
         return $user->role == 'admin'
             ? Response::allow()
-            : Response::deny(__("You cannot Edit this Story because you are not the owner"));
+            : Response::deny(__("You cannot Edit this User because you are not an admin"));
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Story  $story
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Story $story)
+    public function delete(User $user, User $model)
     {
         return $user->role == 'admin'
-            ? Response::allow()
-            : Response::deny(__("You cannot Delete this Story because you are not the owner"));
+        ? Response::allow()
+        : Response::deny(__("You cannot Delete this User because you are not an admin"));
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Story  $story
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Story $story)
+    public function restore(User $user, User $model)
     {
         //
     }
@@ -88,10 +90,10 @@ class StoriesPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Story  $story
+     * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Story $story)
+    public function forceDelete(User $user, User $model)
     {
         //
     }

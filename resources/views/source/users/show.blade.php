@@ -35,21 +35,24 @@
             <img class="h-auto w-full mx-auto" src="{{ strpos($user->file_name,'avatar') == false ? 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' : asset($user->file_name) }}" alt="">
           </div>
           <h1 class="text-gray-900 font-bold text-xl leading-8 mt-4">ABOUT ME</h1>
-          <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{{$user->description}}</p>
+          <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{!! $user->description !!}</p>
           <ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-            <li class="flex items-center py-3 grid grid-cols-2 gap-2">
-              <a href="{{ route('users.edit',[$user]) }}" class="col-span-1 w-full bg-green-800 py-1 px-2 rounded text-white text-base font-semibold text-center">EDIT</a>
-              <form method="POST" action="{{ route('users.destroy',[$user->id]) }}">
-                @csrf
-                @method('DELETE')
-                <button href="{{ route('users.edit',[$user]) }}" class="col-span-1 w-full bg-red-800 py-1 px-2 rounded text-white text-base font-semibold text-center">DELETE</button>
-              </form>
-            </li>
+            @can('update',$user)
+              <li class="flex items-center py-3 grid grid-cols-2 gap-2">
+                <a href="{{ route('users.edit',[$user]) }}" class="col-span-1 w-full bg-green-800 py-1 px-2 rounded text-white text-base font-semibold text-center">EDIT</a>
+                <form method="POST" action="{{ route('users.destroy',[$user->id]) }}">
+                  @csrf
+                  @method('DELETE')
+                  <button href="{{ route('users.edit',[$user]) }}" class="col-span-1 w-full bg-red-800 py-1 px-2 rounded text-white text-base font-semibold text-center">DELETE</button>
+                </form>
+              </li>
+            @endcan
             <li class="flex items-center py-3">
               <span>Member since</span>
               <span class="ml-auto">{{\Carbon\Carbon::parse($user->created_at)->format('d-m-Y')}}</span>
             </li>
           </ul>
+
         </div>
         <!-- End of profile card -->
         <div class="my-4"></div>

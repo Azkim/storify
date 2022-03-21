@@ -11,6 +11,17 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+    
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(User::class, 'user');
+    }  
+    
     /**
      * Display a listing of the resource.
      *
@@ -108,7 +119,7 @@ class ProfileController extends Controller
         ]);
  
         if ($validator->fails()) {
-            return redirect('users.index')
+            return redirect('users')
                         ->withErrors($validator)
                         ->withInput();
         }

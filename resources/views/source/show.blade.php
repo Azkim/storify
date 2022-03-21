@@ -19,7 +19,7 @@
 
                             <div class="flex justify-between items-center mt-0">
 
-                                <div class="grid grid-cols-2 gap-2 pt-1">
+                                <div class="grid grid-cols-2 gap-2 pt-1 pb-3">
                                     @can('update',$story)
                                     <button class="px-4 h-8 bg-green-700 text-white text-center font-bold" style="border-radius: 0.25rem;"><a href="{{ route('stories.edit',[$story]) }}">EDIT</a></button>
                                     <form method="POST" action="{{ route('stories.destroy',[$story->id]) }}">
@@ -52,11 +52,13 @@
                                         <p class="font-semibold text-gray-600 text-xs"> {{$story->user()->first()->role}} </p>
                                     </div>
                                 </div>
-                                <p class="text-gray-700 py-3">{{ $story->user()->first()->description}}</p>
-                                <a href="{{ route('users.show',[$story->user()->first()->id]) }}" class="px-2 py-1 text-gray-100 bg-blue-700 flex w-full items-center justify-center" style="border-radius: 0.25rem;">
-                                    PROFILE
-                                    <i class='bx bx-user-plus ml-2'></i>
-                                </a>
+                                <p class="text-gray-700 py-1">{!! $story->user()->first()->description !!}</p>
+                                <div class="pt-5">
+                                    <a href="{{ route('users.show',[$story->user()->first()->id]) }}" class="px-2 py-1 text-gray-100 bg-blue-700 flex w-full items-center justify-center" style="border-radius: 0.25rem;">
+                                        PROFILE
+                                        <i class='bx bx-user-plus ml-2'></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
