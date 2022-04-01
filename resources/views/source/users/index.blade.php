@@ -1,11 +1,16 @@
 @extends('source._layouts.master')
 
 @section('body')
-@include('source._layouts.metrics')
 
 <div class="flex flex-col mt-8">
     <div class="-my-2 py-0 overflow-x-auto lg:-mx-8 lg:px-8 md:px-4">
         <div class="align-middle inline-block w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+            @if($results->isEmpty())
+            <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 text-lg" role="alert">
+                <p class="font-bold">Oops!</p>
+                <p>There are no users to display.</p>
+            </div>
+            @else
             <table class="min-w-full border-collapse block md:table">
                 <thead class="block md:table-header-group">
                     <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto md:relative xs:invisible sm:invisible md:visible lg:visible xl:visible">
@@ -31,7 +36,7 @@
                                     <div class="text-sm leading-5 text-gray-500">{{ $result->email }}</div>
                                 </div>
                             </div>
-                        </td> 
+                        </td>
                         <td class="md:break-all text-clip py-2 pl-8 md:border md:border-grey-500 text-left block md:table-cell"><span class="text-clip inline-block w-full md:hidden font-bold">CREATED AT</span>{{\Carbon\Carbon::parse($result->created_at)->format('Y-m-d H:i', '2016-11-05 12:00')}}</td>
                         <td class=" md:break-all text-clip py-2 pl-8 md:border md:border-grey-500 text-left block md:table-cell"><span class="text-clip inline-block w-full md:hidden font-bold">STORIES</span>
                             @if($result->stories()->exists())
@@ -51,6 +56,7 @@
                     @endforeach
                 </tbody>
             </table><br>{{$results->links()}}<br><br>
+            @endif
         </div>
     </div>
 </div>

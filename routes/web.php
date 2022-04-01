@@ -28,18 +28,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Auth Routes
 Route::get('/user/register', [CustomRegistrationController::class, 'register'])->name('user.register');
-Route::post ('/user/save', [CustomRegistrationController::class, 'save'])->name('user.save');
+Route::post('/user/save', [CustomRegistrationController::class, 'save'])->name('user.save');
 Route::get('/login', [CustomLoginController::class, 'create'])
-                ->middleware('guest')
-                ->name('login');
+    ->middleware('guest')
+    ->name('login');
 Route::post('/login', [CustomLoginController::class, 'store'])
-                ->middleware('guest');
+    ->middleware('guest');
 
 
 //Main App Routes
-Route::middleware(['auth'])->group(function(){
-    Route::resource('stories','StoriesController');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/start', function () {
+        return view('source.dashboard');
+    })->name('start');
+    Route::get('chart/user', 'StorifyChartController@userchart')->name('user.chart')->middleware('headers.response'); //an endpoint for charts
+    Route::get('chart/story', 'StorifyChartController@storychart')->name('story.chart')->middleware('headers.response'); //an endpoint for charts
+    Route::resource('stories', 'StoriesController');
     Route::get('/user/articles/{user}', 'ProfileController@articles')->name('user.articles');
-    Route::resource('users','ProfileController');
+    Route::resource('users', 'ProfileController');
     Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
 });

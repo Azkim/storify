@@ -45,7 +45,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function stories(){
+    public function stories()
+    {
         return $this->hasMany(\App\Models\Story::class);
     }
 }

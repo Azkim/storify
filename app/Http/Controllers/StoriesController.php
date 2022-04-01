@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Story;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoryRequest;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
-use App\Policies\StoriesPolicy;
-use Auth;
 
 class StoriesController extends Controller
 {
@@ -36,7 +32,7 @@ class StoriesController extends Controller
             ->orderBy('stories.id', 'desc')
             ->paginate(20);
 
-        return view('source.index', compact('results'));
+        return view('source.stories.index', compact('results'));
     }
 
     /**
@@ -46,7 +42,7 @@ class StoriesController extends Controller
      */
     public function create()
     {
-        return view('source.create');
+        return view('source.stories.create');
     }
 
     /**
@@ -79,7 +75,7 @@ class StoriesController extends Controller
 
         $name_of_user = $all_users->name;
 
-        return view('source.show', compact('story', 'name_of_user'));
+        return view('source.stories.show', compact('story', 'name_of_user'));
     }
 
     /**
@@ -92,7 +88,7 @@ class StoriesController extends Controller
     {
         //$this->authorize('update', $story);
 
-        return view('source.edit', compact('story'));
+        return view('source.stories.edit', compact('story'));
     }
 
     /**

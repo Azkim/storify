@@ -3,11 +3,17 @@
 
 @section('body')
 
-@include('source._layouts.metrics')
-
 <div class="flex flex-col mt-8">
     <div class="-my-2 py-0 overflow-x-auto lg:-mx-8 lg:px-8 md:px-4">
         <div class="align-middle inline-block w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+
+            @if($results->isEmpty())
+            <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 text-lg" role="alert">
+                <p class="font-bold">Oops!</p>
+                <p>There are no stories to display.</p>
+            </div>
+            @else
+
             <table class="min-w-full border-collapse block md:table">
                 <thead class="block md:table-header-group">
                     <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto md:relative xs:invisible sm:invisible md:visible lg:visible xl:visible">
@@ -44,6 +50,7 @@
                     @endforeach
                 </tbody>
             </table><br>{{$results->links()}}<br><br>
+            @endif
         </div>
     </div>
 </div>
