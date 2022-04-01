@@ -3,8 +3,8 @@
 
 <div class="relative rounded-xl overflow-auto p-8">
     <div class="grid grid-cols-2 gap-4">
-        <div class="flex flex-wrap col-span-2 divide-y">
-            <h2 class="text-3xl font-bold text-gray-700 leading-10 mb-3">Performance Indicators</h2>
+        <div class="bg-orange-100 border-l-4 border-blue-500 p-3 flex flex-wrap col-span-2 divide-y rounded-r-md" role="alert">
+            <h2 class="text-3xl font-bold text-gray-700 leading-10">Performance Indicators</h2>
         </div>
         <div class="flex flex-wrap md:col-span-1 sm:col-span-2">
             <div class="flex items-center pl-5 py-3 shadow-sm rounded-md bg-white sm:w-full">
@@ -69,11 +69,11 @@
             </div>
         </div>
         <!-- Chart's container -->
-        <div class="flex flex-wrap col-span-2 divide-y">
-            <h2 class="text-3xl font-bold text-gray-700 leading-10 mt-10 mb-0">Performance Trends</h2>
+        <div class="bg-orange-100 border-l-4 border-blue-500 p-3 flex flex-wrap col-span-2 divide-y rounded-r-md" style="margin-top:20px" role="alert">
+            <h2 class="text-3xl font-bold text-gray-700 leading-10">Performance Trends</h2>
         </div>
-        <div id="chart1" class="md:col-span-2 sm:col-span-2 mb-10" style="height: 400px;"></div>
-        <div id="chart2" class="md:col-span-2 sm:col-span-2" style="height: 400px;"></div>
+        <div id="chart1" class="md:col-span-1 sm:col-span-2 mb-10" style="height: 400px;"></div>
+        <div id="chart2" class="md:col-span-1 sm:col-span-2" style="height: 400px;"></div>
     </div>
 </div>
 
@@ -83,10 +83,10 @@
 <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
 <!-- Your application script -->
 <script>
-    var route = "{{route('user.chart')}}";
+    var route_1 = "{{route('user.chart')}}";
     const user_chart = new Chartisan({
         el: '#chart1',
-        url: route,
+        url: route_1,
         hooks: new ChartisanHooks()
             .colors(['#ECC94B', '#4299E1'])
             .responsive()
@@ -117,13 +117,11 @@
                 beginAtZero: true
             }]),
     });
-</script>
 
-<script>
-    var route = "{{route('story.chart')}}";
+    var route_2 = "{{route('story.chart')}}";
     const story_chart = new Chartisan({
         el: '#chart2',
-        url: route,
+        url: route_2,
         hooks: new ChartisanHooks()
             .colors(['#ECC94B', '#4299E1'])
             .responsive()
