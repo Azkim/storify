@@ -27,11 +27,14 @@ class StoriesController extends Controller
      */
     public function index()
     {
+        DB::enableQueryLog();
+
         $results = DB::table('users')
             ->join('stories', 'users.id', '=', 'stories.user_id')
             ->orderBy('stories.id', 'desc')
             ->paginate(20);
 
+        //dd(DB::getQueryLog());
         return view('source.stories.index', compact('results'));
     }
 

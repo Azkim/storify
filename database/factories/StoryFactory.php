@@ -13,13 +13,13 @@ class StoryFactory extends Factory
      * @return array
      */
     public function definition()
-    {        
+    {
         return [
-        'title' => $this->faker->sentence(4,true),
-        'body' => $this->faker->paragraph($nb = 3, $asText = true),
-        'type' => $this->faker->randomElement($array = array ('educational','general','career')),
-        'status' => $this->faker->boolean(),
-        'user_id' => $this->faker->numberBetween($min = 1, $max = User::count())
-    ];
-    } 
+            'title' => $this->faker->sentence(3, true),
+            'body' => $this->faker->paragraphs(3, true),
+            'type' => $this->faker->randomElement(['educational', 'general', 'career']),
+            'status' => $this->faker->boolean(),
+            'user_id' => $this->faker->numberBetween($min = 1, $max = User::count())
+        ];
+    }
 }

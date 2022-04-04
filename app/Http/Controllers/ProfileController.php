@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
-    
+
     /**
      * Create the controller instance.
      *
@@ -20,8 +20,8 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->authorizeResource(User::class, 'user');
-    }  
-    
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +29,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        DB::enableQueryLog();
         $results = User::paginate(20);
+        //dd(DB::getQueryLog());
 
         return view('source.users.index', compact('results'));
     }
@@ -96,7 +98,7 @@ class ProfileController extends Controller
      */
     public function edit(User $user)
     {
-        return view('source.users.edit',compact('user'));
+        return view('source.users.edit', compact('user'));
     }
 
     /**
@@ -108,22 +110,22 @@ class ProfileController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        
+
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'email' => 'required|email|min:8|max:255|unique:users,email,'.$user->id,
+            'email' => 'required|email|min:8|max:255|unique:users,email,' . $user->id,
             'password' => ['required', 'string', 'min:8'],
             'description' => 'required',
-            'avatar' => ['required','mimes:jpg,png'],
+            'avatar' => ['required', 'mimes:jpg,png'],
             'role' => 'required',
         ]);
- 
+
         if ($validator->fails()) {
             return redirect('users')
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
-        
+
         $validated_submitted_data = $validator->validated();
 
         $fileName = $request->file('avatar')->getClientOriginalName();
@@ -132,8 +134,7 @@ class ProfileController extends Controller
         $user->update($validated_submitted_data);
 
         return redirect()->route('users.index', [$user])
-             ->with('status', 'The user has been updated.');
-        
+            ->with('status', 'The user has been updated.');
     }
 
     /**
