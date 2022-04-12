@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('start');
     Route::get('chart/user', 'StorifyChartController@userchart')->name('user.chart')->middleware('headers.response'); //an endpoint for charts
     Route::get('chart/story', 'StorifyChartController@storychart')->name('story.chart')->middleware('headers.response'); //an endpoint for charts
+    //Route::get('/stories/search', 'StoriesController@findSearch')->name('story.search');
     Route::resource('stories', 'StoriesController');
     Route::get('/user/articles/{user}', 'ProfileController@articles')->name('user.articles');
     Route::resource('users', 'ProfileController');

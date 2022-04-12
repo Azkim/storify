@@ -1,7 +1,7 @@
 @extends('source._layouts.master')
 
-
 @section('body')
+@include('source._layouts.search')
 
 <div class="flex flex-col mt-8">
     <div class="-my-2 py-0 overflow-x-auto lg:-mx-8 lg:px-8 md:px-4">
@@ -20,6 +20,7 @@
                         <th class="bg-gray-600 py-2 pl-8 text-white text-sm font-bold md:border md:border-grey-500 text-left block md:table-cell">TIME CREATED</th>
                         <th class="bg-gray-600 py-2 pl-8 text-white text-sm font-bold md:border md:border-grey-500 text-left block md:table-cell">AUTHOR</th>
                         <th class="bg-gray-600 py-2 pl-8 text-white text-sm font-bold md:border md:border-grey-500 text-left block md:table-cell">TITLE OF STORY</th>
+                        <th class="bg-gray-600 py-2 pl-8 text-white text-sm font-bold md:border md:border-grey-500 text-left block md:table-cell">TYPE OF STORY</th>
                         <th class="grid place-items-center bg-gray-600 py-2 pl-8 pr-10 text-white text-sm font-bold md:border md:border-grey-500 text-left block md:table-cell">STATUS</th>
                         <th class="bg-gray-600 py-2 pl-8  text-white text-sm font-bold md:border md:border-grey-500 text-left block md:table-cell">ACTION</th>
                     </tr>
@@ -30,6 +31,7 @@
                         <td class="line-clamp-3 md:break-all text-clip py-2 pl-8 md:border md:border-grey-500 text-left block md:table-cell"><span class="line-clamp-2 text-clip inline-block w-full md:hidden font-bold">Time Created</span>{{\Carbon\Carbon::parse($result->created_at)->format('Y-m-d H:i', '2016-11-05 12:00')}}</td>
                         <td class="py-2 pl-8 md:border md:border-grey-500 text-left block md:table-cell"><span class="mb-1000 inline-block w-full md:hidden font-bold">Author</span>{{ $result->name }}</td>
                         <td class="py-2 pl-8 md:border md:border-grey-500 text-left block md:table-cell"><span class="mb-1000 inline-block w-full md:hidden font-bold">Title</span>{{ $result->title }}</td>
+                        <td class="py-2 pl-8 md:border md:border-grey-500 text-left block md:table-cell"><span class="mb-1000 inline-block w-full md:hidden font-bold">Title</span>{{ ucfirst($result->type) }}</td>
                         <td class="py-2 pl-8 whitespace-no-wrap border-b border-white">
                             @if($result->status == 1)
                             <span class="inline-block w-full md:hidden font-bold">Status</span>
@@ -49,7 +51,7 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table><br>{{$results->links()}}<br><br>
+            </table><br>{{$results->withQueryString()->links()}}<br><br>
             @endif
         </div>
     </div>

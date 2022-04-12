@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Story;
 use App\Http\Requests\StoryRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StoriesController extends Controller
@@ -25,16 +27,70 @@ class StoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         DB::enableQueryLog();
 
         $results = DB::table('users')
             ->join('stories', 'users.id', '=', 'stories.user_id')
             ->orderBy('stories.id', 'desc')
-            ->paginate(20);
+
+            ->where(
+                function ($query) use ($request) {
+                    if ($request->missing(['type', 'term']) && $request->has('status')) {
+                        return $query->where('status', $request->input('status'));
+                    } elseif ($request->missing(['status', 'term']) && $request->has('type')) {
+                        return $query->where('type', $request->input('type'));
+                    } elseif ($request->missing(['type', 'status']) && $request->has('term')) {
+                        return $query
+                            ->where('name', 'like', "%" . $request->input('term') . "%")
+                            ->orWhere('title', 'like', "%" . $request->input('term') . "%");
+                    } else
+                        $request->whenHas('name', function ($input) use ($request) {
+
+                            dd($input);
+                            return $input->where('status', $request->input('status'))
+                                ->where('type', $request->input('type'))
+                                ->where('name', 'like', "%" . $request->term . "%")
+                                ->orWhere('title', 'like', "%" . $request->term . "%");
+                        }, function () {
+                            echo "%%%%%%%%%%";
+                        });
+                }
+            )
+
+            // ->where(
+            //     function ($query) use ($request) {
+            //         if (($request->input()) == null)
+            //             return $query;
+            //         else return $query
+            //             ->where('status', $request->input('status'))
+            //             ->where('type', $request->input('type'))
+            //             ->where('name', 'like', "%" . $request->term . "%")
+            //             ->orWhere('title', 'like', "%" . $request->term . "%");
+            //     }
+            // )
+            // )->where(
+            //     function ($query) use ($request) {
+            //         if (($request->input()) == null)
+            //             return $query;
+            //         else return $query
+            //             ->where('type', $request->input('type'));
+            //     }
+            // )->where(
+            //     function ($query) use ($request) {
+            //         if (($request->input()) == null)
+            //             return $query;
+            //         else return $query
+            //             ->where('status', $request->input('status'));
+            //     }
+            // )
+            ->paginate(3);
+
+        //dd($results);
 
         //dd(DB::getQueryLog());
+
         return view('source.stories.index', compact('results'));
     }
 
