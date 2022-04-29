@@ -1,4 +1,5 @@
 module.exports = {
+
   future: {
     // removeDeprecatedGapUtilities: true,
     // purgeLayersByDefault: true,
@@ -9,6 +10,7 @@ module.exports = {
     './resources/views/**/*.blade.php',
     './resources/js/**/*.vue',
     "./node_modules/@themesberg/flowbite/**/*.js",
+    './src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'
   ],
 
   target: 'relaxed',
@@ -833,6 +835,7 @@ module.exports = {
       require('@tailwindcss/forms'),
       require('@tailwindcss/line-clamp'),
       require('@tailwindcss/aspect-ratio'),
-      [require('tailwindcss-invalid-variant-plugin')]
+    [require('tailwindcss-invalid-variant-plugin')],
+      require('tw-elements/dist/plugin')
   ],
 }

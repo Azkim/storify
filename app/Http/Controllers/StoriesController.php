@@ -34,60 +34,62 @@ class StoriesController extends Controller
         $results = DB::table('users')
             ->join('stories', 'users.id', '=', 'stories.user_id')
             ->orderBy('stories.id', 'desc')
-
-            ->where(
+            //->whereBetween('stories.created_at', [$request->input('start_date'), $request->input('end_date')])
+            ->where( //single field filter
                 function ($query) use ($request) {
-                    if ($request->missing(['type', 'term']) && $request->has('status')) {
+
+                    if ($request->missing(['type', 'term', 'start_date', 'end_date']) && $request->has('status')) {
                         return $query->where('status', $request->input('status'));
-                    } elseif ($request->missing(['status', 'term']) && $request->has('type')) {
+                    } elseif ($request->missing(['status', 'term', 'start_date', 'end_date']) && $request->has('type')) {
                         return $query->where('type', $request->input('type'));
-                    } elseif ($request->missing(['type', 'status']) && $request->has('term')) {
+                    } elseif ($request->missing(['type', 'status', 'start_date', 'end_date']) && $request->has('term')) {
                         return $query
                             ->where('name', 'like', "%" . $request->input('term') . "%")
                             ->orWhere('title', 'like', "%" . $request->input('term') . "%");
-                    } else
-                        $request->whenHas('name', function ($input) use ($request) {
-
-                            dd($input);
-                            return $input->where('status', $request->input('status'))
-                                ->where('type', $request->input('type'))
-                                ->where('name', 'like', "%" . $request->term . "%")
-                                ->orWhere('title', 'like', "%" . $request->term . "%");
-                        }, function () {
-                            echo "%%%%%%%%%%";
-                        });
+                    } elseif ($request->missing(['type', 'status']) && $request->has(['start_date', 'end_date'])) {
+                        return $query->whereBetween('stories.created_at', [$request->input('start_date'), $request->input('end_date')]);
+                    }
                 }
             )
+            ->where( //all fields search and filter
+                function ($query) use ($request) {
+                    if ($request->has('status') && $request->has('type') && $request->has('term')) {
+                        return $query
+                            ->where('type', $request->input('type'))
+                            ->where('status', $request->input('status'))
+                            ->where('name', 'like', "%" . $request->input('term') . "%");
+                    }
+                }
+            )
+            ->where( //one text search, one field filter
+                function ($query) use ($request) {
+                    if ($request->has('term') && $request->has('type')) {
+                        return $query
+                            ->where('type', $request->input('type'))
+                            ->where('name', 'like', "%" . $request->input('term') . "%");
+                    }
+                }
+            )
+            ->where( //one text search, one field filter
+                function ($query) use ($request) {
+                    if ($request->has('status') && $request->has('term')) {
+                        return $query
+                            ->where('status', $request->input('status'))
+                            ->where('name', 'like', "%" . $request->input('term') . "%");
+                    }
+                }
+            )->where( //two fields filter
+                function ($query) use ($request) {
+                    if ($request->has('status') && $request->has('type')) {
+                        return $query
+                            ->where('type', $request->input('type'))
+                            ->where('status', $request->input('status'));
+                    }
+                }
+            )
+            ->paginate(15);
 
-            // ->where(
-            //     function ($query) use ($request) {
-            //         if (($request->input()) == null)
-            //             return $query;
-            //         else return $query
-            //             ->where('status', $request->input('status'))
-            //             ->where('type', $request->input('type'))
-            //             ->where('name', 'like', "%" . $request->term . "%")
-            //             ->orWhere('title', 'like', "%" . $request->term . "%");
-            //     }
-            // )
-            // )->where(
-            //     function ($query) use ($request) {
-            //         if (($request->input()) == null)
-            //             return $query;
-            //         else return $query
-            //             ->where('type', $request->input('type'));
-            //     }
-            // )->where(
-            //     function ($query) use ($request) {
-            //         if (($request->input()) == null)
-            //             return $query;
-            //         else return $query
-            //             ->where('status', $request->input('status'));
-            //     }
-            // )
-            ->paginate(3);
-
-        //dd($results);
+        //dd($request);
 
         //dd(DB::getQueryLog());
 

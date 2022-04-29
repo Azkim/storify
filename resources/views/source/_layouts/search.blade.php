@@ -7,31 +7,26 @@
                 </svg>
             </div>
 
-            <input type="text" name="term" placeholder="Search a story..." class="px-8 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-base">
+            <input type="text" name="term" placeholder="Search a story..." class="px-8 py-3 w-full bg-gray-100 rounded-md border-1 focus:border-gray-500 focus:bg-white focus:ring-0 text-base">
         </div>
 
-        <div>
-            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-                <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-base">
-                    <option value="">All Type</option>
-                    <option value="for-rent">For Rent</option>
-                    <option value="for-sale">For Sale</option>
-                </select>
 
-                <select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-base">
-                    <option value="">All Type</option>
-                    <option value="for-rent">For Rent</option>
-                    <option value="for-sale">For Sale</option>
-                </select>
+        <div class="grid md:grid-cols-4 sm:grid-cols-1 gap-4 mt-4 sm:mt-10 relative">
 
-                <select name="type" class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-base">
+
+            <input id="start_date" name="start_date" class="px-4 py-3 w-full bg-gray-100 rounded-md border-1 focus:border-gray-500 focus:bg-white focus:ring-0 text-base" type="date" />
+            <input id="end_date" name="end_date" class="px-4 py-3 w-full bg-gray-100 rounded-md border-1 focus:border-gray-500 focus:bg-white focus:ring-0 text-base" type="date" />
+
+            <div>
+                <select name="type" class="px-4 py-3 w-full bg-gray-100 rounded-md border-1 focus:border-gray-500 focus:bg-white focus:ring-0 text-base">
                     <option disabled selected>Select the type</option>
                     <option value="educational">Educational</option>
                     <option value="career">Career</option>
                     <option value="general">General</option>
                 </select>
-
-                <select name="status" class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-base">
+            </div>
+            <div>
+                <select name="status" class="sm:flex-col px-4 py-3 w-full bg-gray-100 rounded-md border-1 focus:border-gray-500 focus:bg-white focus:ring-0 text-base">
                     <option disabled selected>Select the status</option>
                     <option value="1">Active</option>
                     <option value="0">Inactive</option>
@@ -40,12 +35,12 @@
         </div>
 
         <div class="flex gap-4 md:flex-row-reverse sm:flex-col mt-10">
-            <button type="submit" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-base font-medium rounded-md">
-                Search
+            <button type="submit" class="px-4 py-2 bg-green-600 hover:bg-green-800 text-white text-base font-semibold rounded-md">
+                SEARCH
             </button>
 
-            <a href="{{ route('stories.index') }}" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-base font-medium rounded-md">
-                Reset
+            <a href="{{ route('stories.index') }}" class="text-center px-4 py-2 bg-blue-600 hover:bg-blue-800 text-white font-semibold text-base rounded-md">
+                RESET
             </a>
         </div>
     </form>

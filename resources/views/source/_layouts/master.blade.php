@@ -7,13 +7,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="referrer" content="always">
     <link rel="canonical" href="">
-
     <meta name="description" content="{{ config('dash.meta_description', 'Dum Dum Dum!!') }}">
-
     <title>{{ config('app.name', 'Laravel') }} </title>
-
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
-
     <script src="{{ mix('js/main.js') }}"></script>
 </head>
 
